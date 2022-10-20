@@ -1,6 +1,6 @@
 # Jupyter Lab launcher
 
-Simplify launching JupyterLab app into the HT computing cluster
+Simplify launching a JupyterLab app, with Python and R, into the HT computing cluster
 
 ## Requirements
 
