@@ -26,7 +26,7 @@ RUN . /opt/conda/etc/profile.d/conda.sh && \
         --copy \
         --prefix /opt/env \
         /docker/conda-lock.yml && \
-    /opt/env/bin/Rscript /docker/irkernel_setup.r && \
+    PATH="/opt/env/bin:${PATH}" Rscript /docker/irkernel_setup.r && \
     conda clean -afy
 
 # -----------------
