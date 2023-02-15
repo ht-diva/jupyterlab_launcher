@@ -1,4 +1,4 @@
-# hadolint global ignore=SC1091
+# hadolint global ignore=SC1091,SC1072
 # Dockerfile
 
 # -----------------
