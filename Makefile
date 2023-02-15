@@ -1,4 +1,5 @@
-APPNAME=`cat environment.yml|grep name|cut -f2 -d' '`
+update: environment.yml
+	conda env update --file environment.yml¥APPNAME=`cat environment.yml|grep name|cut -f2 -d' '`
 TARGETS=activate setup update
 
 # Oneshell means I can run multiple lines in a recipe in the same shell, so I don't have to
@@ -22,3 +23,6 @@ setup: update
 
 update: environment.yml
 	conda env update --file environment.yml
+
+build_docker:
+	docker build -t jupyterlab:latest .
