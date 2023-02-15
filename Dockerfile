@@ -1,4 +1,4 @@
-# hadolint global ignore=SC1091,SC1072
+# hadolint global ignore=SC1091
 # Dockerfile
 
 # -----------------
@@ -26,7 +26,7 @@ RUN . /opt/conda/etc/profile.d/conda.sh && \
         --copy \
         --prefix /opt/env \
         /docker/conda-lock.yml && \
-    source("/docker/irkernel_setup.r") && \
+    . /docker/irkernel_setup.r && \
     conda clean -afy
 
 # -----------------
