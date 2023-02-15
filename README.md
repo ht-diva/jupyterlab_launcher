@@ -8,21 +8,21 @@ You need to have a working conda installation and be enabled to access HT comput
 
 ## Getting started
 
-This project will:
-* create a conda virtual environment, called `jupyterlab_launcher`, 
+This project:
+* creates a conda virtual environment, called `jupyterlab_launcher`, 
 with the dependencies defined into the `environment.yml` file
-* copy, into your home directory, a slurm script to launch JupyterLab using the above env 
+* copies, into your home directory, a slurm script to launch JupyterLab using the above env 
 
 First of all, cd into your working directory and digit:
 
 ```bash
-git clone http://gitlab.fht.org/hds-center/jupyterlab_launcher
+git clone https://gitlab.fht.org/hds-center/jupyterlab-launcher.git
 cd jupyterlab_launcher
-make create
+make setup
 
 ```
 
-After a few minutes, your conda environment will be ready and you can start Jupyterlab with:
+After a few minutes your conda environment will be ready, and you can start Jupyterlab with:
 
 ```bash
 cd $HOME
