@@ -25,11 +25,9 @@ RUN . /opt/conda/etc/profile.d/conda.sh && \
         --mamba \
         --copy \
         --prefix /opt/env \
-        /docker/conda-lock.yml && conda clean -afy
-
-RUN . /opt/conda/etc/profile.d/conda.sh && \
-    conda activate lock && \
-    Rscript /docker/irkernel_setup.r
+        /docker/conda-lock.yml && \
+    Rscript /docker/irkernel_setup.r && \
+    conda clean -afy
 
 # -----------------
 # Primary container
