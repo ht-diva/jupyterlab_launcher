@@ -1,10 +1,10 @@
-name: jupyterlab_launcher
+
 channels:
   - r
   - conda-forge
   - defaults
 dependencies:
-  - jupyterlab=3.4.4
+  - jupyterlab=3.6.1
   - nodejs=16.13.1
   - pip=22.1.2
   - pyarrow=9.0.0
