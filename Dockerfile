@@ -4,7 +4,7 @@
 # -----------------
 # Builder container
 # -----------------
-FROM condaforge/mambaforge:4.14.0-0 as builder
+FROM condaforge/mambaforge:4.14.0-0
 
 COPY environment_docker.yml /docker/environment.yml
 COPY irkernel_setup.r /docker/irkernel_setup.r
@@ -29,12 +29,6 @@ RUN . /opt/conda/etc/profile.d/conda.sh && \
     PATH="/opt/env/bin:${PATH}" Rscript /docker/irkernel_setup.r && \
     conda clean -afy
 
-# -----------------
-# Primary container
-# -----------------
-FROM gcr.io/google-appengine/debian11@sha256:5379cc9c6604575e7d7b2272dfb2390bfe63fc116524d26b0afc9901d07ce1d3
-# copy over the generated environment
-COPY --from=builder /opt/env /opt/env
 ENV PATH="/opt/env/bin:${PATH}"
 EXPOSE 8890
 
