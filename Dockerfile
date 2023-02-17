@@ -6,7 +6,7 @@
 # -----------------
 FROM condaforge/mambaforge:4.14.0-0 as builder
 
-COPY environment.yml /docker/environment.yml
+COPY environment_docker.yml /docker/environment.yml
 COPY irkernel_setup.r /docker/irkernel_setup.r
 
 RUN . /opt/conda/etc/profile.d/conda.sh && \
@@ -32,7 +32,7 @@ RUN . /opt/conda/etc/profile.d/conda.sh && \
 # -----------------
 # Primary container
 # -----------------
-FROM gcr.io/distroless/base-debian11@sha256:1f862eab95bebd3fb40518407419a45ca3802854b67a89413985139a31358b19
+FROM gcr.io/google-appengine/debian11
 # copy over the generated environment
 COPY --from=builder /opt/env /opt/env
 ENV PATH="/opt/env/bin:${PATH}"
