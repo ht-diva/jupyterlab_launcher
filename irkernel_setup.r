@@ -1,5 +1,3 @@
-install.packages("remotes", repos = "https://cran.mirror.garr.it/CRAN/")
-
-remotes::install_github("IRkernel/IRkernel")
+install.packages('IRkernel', repos = "https://cran.mirror.garr.it/CRAN/")
 
 IRkernel::installspec()
