@@ -2,6 +2,7 @@ channels:
   - r
   - conda-forge
   - defaults
+  - tiledb
 dependencies:
   - jupyterlab=3.6.1
   - nodejs=16.13.1
@@ -11,8 +12,8 @@ dependencies:
   - r-base=4.1.1
   - r-essentials=1.7.0
   - pyarrow=9.0.0
-  - tiledb::tiledb
-  - tiledb::tiledbvcf-py
+  - tiledb
+  - tiledbvcf-py
   - dask
   - pip:
     - numpy==1.24.2
