@@ -11,9 +11,9 @@ dependencies:
   - r-base=4.1.1
   - r-essentials=1.7.0
   - pyarrow=9.0.0
-  - tiledb
-  - tiledbvcf-py
-  - dask-jobqueue
+  - tiledb::tiledb
+  - tiledb::tiledbvcf-py
+  - dask
   - pip:
     - numpy==1.24.2
     - pandas==1.5.3
