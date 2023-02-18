@@ -9,4 +9,5 @@
 #SBATCH --time=06:00:00
 
 source /center/healthds/singularity_functions
+cd $HOME
 launch_jupyterlab
