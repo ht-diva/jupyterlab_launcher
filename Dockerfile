@@ -5,8 +5,7 @@ FROM jupyter/datascience-notebook:2023-02-17
 
 RUN conda config --add channels conda-forge && \
     conda config --add channels bioconda && \
-    conda install --yes --quiet \
-    dask-labextension && \
+    conda install --yes --quiet  --file environment_docker.yml && \
     conda clean -yt
 
 RUN jupyter labextension install dask-labextension
