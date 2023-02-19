@@ -5,7 +5,7 @@ FROM jupyter/datascience-notebook:2023-02-17
 
 COPY environment_docker.yml "/home/${NB_USER}/environment.yml"
 
-RUN conda env update -q --file "/home/${NB_USER}/environment.yml" && \
+RUN conda env update -n base -q --file "/home/${NB_USER}/environment.yml" && \
     conda clean -ayt
 
 RUN jupyter labextension install dask-labextension
