@@ -3,9 +3,11 @@
 
 FROM jupyter/datascience-notebook:2023-02-17
 
+COPY environment_docker.yml /home/$NB_USER/environment.yml
+
 RUN conda config --add channels conda-forge && \
     conda config --add channels bioconda && \
-    conda install --yes --quiet  --file environment_docker.yml && \
+    conda install --yes --quiet  --file /home/$NB_USER/environment.yml && \
     conda clean -yt
 
 RUN jupyter labextension install dask-labextension
