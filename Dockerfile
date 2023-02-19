@@ -10,4 +10,11 @@ RUN conda config --add channels conda-forge && \
     conda clean -yt
 
 RUN jupyter labextension install dask-labextension
- 
+
+
+ENV JUPYTER_PORT=8890
+EXPOSE $JUPYTER_PORT
+
+# Switch back to USER to avoid accidental container runs as root
+USER ${USER}
+WORKDIR "${HOME}"
