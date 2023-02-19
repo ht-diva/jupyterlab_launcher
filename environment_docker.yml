@@ -4,6 +4,4 @@ channels:
   - tiledb
 dependencies:
   - dask-labextension
-  - tiledbvcf-py
-
-
+  - tiledbvcf-py=0.22.2
