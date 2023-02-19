@@ -1,36 +1,13 @@
 # hadolint global ignore=SC1091
 # Dockerfile
 
-# -----------------
-# Builder container
-# -----------------
-FROM condaforge/mambaforge:4.14.0-0
+FROM jupyter/datascience-notebook:2023-02-17
 
-COPY environment_docker.yml /docker/environment.yml
-COPY irkernel_setup.r /docker/irkernel_setup.r
+RUN conda config --add channels conda-forge && \
+    conda config --add channels bioconda && \
+    conda install --yes --quiet \
+    dask-labextension && \
+    conda clean -yt
 
-RUN . /opt/conda/etc/profile.d/conda.sh && \
-    mamba create --name lock && \
-    conda activate lock && \
-    mamba env list && \
-    mamba install --yes pip conda-lock>=1.2.2 setuptools wheel && \
-    conda lock \
-        --file /docker/environment.yml \
-        --kind lock \
-        --lockfile /docker/conda-lock.yml
-
-RUN . /opt/conda/etc/profile.d/conda.sh && \
-    conda activate lock && \
-    conda-lock install \
-        --mamba \
-        --copy \
-        --prefix /opt/env \
-        /docker/conda-lock.yml && \
-    PATH="/opt/env/bin:${PATH}" Rscript /docker/irkernel_setup.r && \
-    conda clean -afy
-
-ENV PATH="/opt/env/bin:${PATH}"
-EXPOSE 8890
-
-CMD ["jupyter-lab","--no-browser", "--ip=0.0.0.0","--port=8890"]
-
+RUN jupyter labextension install dask-labextension
+ 
