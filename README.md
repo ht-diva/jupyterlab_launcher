@@ -95,4 +95,4 @@ jupyter server password
 
 After you enter a password a hashed version will be written to ~/.jupyter/jupyter_server_config.json . It is okay if the hashed version is public.
 
-Now JupyterLab is secure and you will be able to log in with a password using the `http://127.0.0.1:8890/` url without the token.
+Now JupyterLab is secure, and you will be able to log in with a password using the `http://127.0.0.1:8890/` url without the token.
