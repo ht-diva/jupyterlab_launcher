@@ -13,6 +13,8 @@ RUN jupyter labextension install dask-labextension
 ENV JUPYTER_PORT=8890
 EXPOSE $JUPYTER_PORT
 
+ENV PATH="${PATH}:/cm/shared/apps/slurm/current/bin"
+
 # Switch back to USER to avoid accidental container runs as root
 USER ${USER}
 WORKDIR "${HOME}"
