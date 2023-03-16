@@ -1,15 +1,15 @@
 # Jupyter Lab launcher
 
-Simplify launching a JupyterLab app, with Python and R, into the HT computing cluster
+Simplify launching a JupyterLab app, with Python and R, on the HT computing cluster
 
 ## Requirements
 
-You need to have a working conda installation and be enabled to access HT computing cluster.
+You must have a working conda installation and access to the HT computing cluster.
 
 ## Getting started
 
 This project:
-* creates a conda virtual environment, called `jupyterlab_launcher`, 
+* creates a conda virtual environment, called `jupyterlab`, 
 with the dependencies defined into the `environment.yml` file
 * copies, into your home directory, a slurm script to launch JupyterLab using the above env 
 
@@ -37,12 +37,15 @@ You can check the status of your launch_jupyter.sbatch job on a SLURM cluster wi
 squeue -u  $(whoami)
 ```
 
-and the output will be available in the `jupyterlab.log` file in your home directory.
+and the output will be available in the `$job-id_jupyterlab.log` file in your home directory.
+
+Once the job has started, we can't access the compute nodes directly, so we have to bridge to them using [port forwarding](https://en.wikipedia.org/wiki/Port_forwarding).
+
 
 ### Port forwarding Jupyterlab
 
 First, we need to know in which node and port Jupyterlab is running on. Most likely this will be port 8890, but can be different. 
-If you want to be sure, just look at `jupyterlab.log` and check for something like this:
+If you want to be sure, just look at `$job-id_jupyterlab.log` and check for something like this at the end of file:
 ```
 [I 2022-10-19 16:31:13.141 ServerApp] Jupyter Server 1.21.0 is running at:
 [I 2022-10-19 16:31:13.141 ServerApp] http://cnode23:8890/lab?token=1ac91f8df807e4b22888207ccb19897967161e60c7a0
@@ -51,7 +54,7 @@ where:
 * *cnode23* is the remote node that is running jupyterlab
 * and *8890* is the remote port used by jupyterlab
 
-Now you can connect to this node and port like this:
+Open a new shell on your computer and connect to that compute node and port in this way:
 
 ```bash
 ssh -L 8890:cnode23:8890 username@hpclogin.fht.org
@@ -61,7 +64,7 @@ The first half specifies port forwarding and the second half specifies the user 
 
 `ssh -L local_port:remote_node:remote_port user@remote_host`
 
-You have to keep this running in your terminal, maybe using `tmux` or `screen`.
+You have to keep this terminal open as long as jupyterlab runs. It may be helpful to use [tmux](https://en.wikipedia.org/wiki/Tmux) or [screen](https://en.wikipedia.org/wiki/GNU_Screen).
 
 ### Open JupyterLab in your browser
 
